@@ -3,16 +3,13 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import sys
 from sklearn.cluster import AgglomerativeClustering
+from sklearn.metrics import pairwise_distances
 import argparse
 from sklearn.decomposition import PCA
 
 data = pd.read_csv(sys.argv[1])
 k = sys.argv[2]
 
-# parser = argparse.ArgumentParser()
-# parser.add_argument(umbral)
-# args = parser.parse_args()
-#py ./jerarquico.py ./data1.csv 4 
 
 tipo = sys.argv[3]
 if(tipo == 'u'):
@@ -24,27 +21,26 @@ elif(tipo == 'c'):
 else:
     print("No se ingresaron los parametros de manera correcta")
 
-# try:
-#     k = int(sys.argv[2])
-# except IndexError:
-#     k = None
+datos = np.array(data)
+y = np.array(datos[:,1])
+n_clusters = datos.shape[0]
+n_clusters1 = datos.shape[1]
 
 
-    
-    
-data = np.array(data)
-pca = PCA(2)
-datos = pca.fit_transform(data)
+precomputed_data = np.zeros((n_clusters, n_clusters1))
+# precomputed_data=precomputed_data[:,~np.all(np.isnan(datos), axis=0)]
+for i in range(n_clusters):
+    for j in range(n_clusters1):
+        precomputed_data[i,j] = pairwise_distances(datos[y == i], datos[y==j], metric="precomputed")
 
-# clustering = AgglomerativeClustering(
-#     n_clusters=k, affinity='euclidean', linkage='ward', distance_threshold=None)
 
-label = clustering.fit_predict(datos)
+
+label = clustering.fit_predict(precomputed_data)
 chiledren = clustering.children_
 u_labels = np.unique(label)
 
 for i in u_labels:
-    plt.scatter(datos[label == i, 0], datos[label == i, 1],
+    plt.scatter(precomputed_data[label == i, 0], precomputed_data[label == i, 1],
                 label=str("Cluster ") + str(i), cmap='rainbow')
 
 
