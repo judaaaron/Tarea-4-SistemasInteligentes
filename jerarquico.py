@@ -22,18 +22,19 @@ else:
     print("No se ingresaron los parametros de manera correcta")
 
 datos = np.array(data)
-y = np.array(datos[:,1])
 n_clusters = datos.shape[0]
-n_clusters1 = datos.shape[1]
 
+precomputed_data = np.zeros((n_clusters, n_clusters))
+x=datos[:,0]
+y = list()
 
-precomputed_data = np.zeros((n_clusters, n_clusters1))
-# precomputed_data=precomputed_data[:,~np.all(np.isnan(datos), axis=0)]
 for i in range(n_clusters):
-    for j in range(n_clusters1):
-        precomputed_data[i,j] = pairwise_distances(datos[y == i], datos[y==j], metric="precomputed")
+    y.append(i)
+y = np.array(y)
 
-
+for i in range(n_clusters):
+    for j in range(n_clusters):
+        precomputed_data = pairwise_distances(x[y == i], x[y == j], metric='precomputed')
 
 label = clustering.fit_predict(precomputed_data)
 chiledren = clustering.children_
