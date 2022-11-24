@@ -3,20 +3,19 @@ import matplotlib.pyplot as plt
 import sys
 import numpy as np
 from sklearn.cluster import KMeans
-from sklearn.decomposition import PCA
 
 data = pd.read_csv(sys.argv[1])
-pca = PCA()
+data = np.array(data)
 #pregunta al dr
-
-datos = pca.fit_transform(data)
 k = int(sys.argv[2])
 kmeans = KMeans(n_clusters=k)
-label = kmeans.fit_predict(datos)
+label = kmeans.fit_predict(data)
+print(label)
 centroids = kmeans.cluster_centers_
 u_labels = np.unique(label)
 for i in u_labels:
-    plt.scatter(datos[label == i, 0], datos[label == i, 1],
+    Slabel = label == i
+    plt.scatter(data[Slabel, 0], data[Slabel, 1],
     label=str("Cluster ") + str(i), cmap='tab10')
 
 
