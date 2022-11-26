@@ -20,17 +20,18 @@ else:
 
 datos = np.array(data)
 
-label = clustering.fit(datos)
+clusters = clustering.fit(datos)
+labels = clusters.labels_
 # chiledren = clustering.children_
 # u_labels = np.unique(label)
 
-# if(tipo == 'u'):
-#     title = "Agglomerative con k = None y umbral = " + k
-# elif(tipo == 'c'):
-#     title = "Agglomerative con k clusters = " + k + " y umbral = None"
-# fig = plt.scatter(chiledren[:, 0], chiledren[:, 1], s=80, color='black', label='chiledren')
-# man = plt.get_current_fig_manager()
-# man.set_window_title(title)
+if(tipo == 'u'):
+    title = "Agglomerative con k = None y umbral = " + k
+elif(tipo == 'c'):
+    title = "Agglomerative con k clusters = " + k + " y umbral = None"
+fig = plt.scatter(datos[:, 0], datos[:, 1], c=labels, cmap='rainbow')
+man = plt.get_current_fig_manager()
+man.set_window_title(title)
 
-# plt.legend()
-# plt.show()
+plt.legend()
+plt.show()
