@@ -28,4 +28,5 @@ man = plt.get_current_fig_manager()
 man.set_window_title(title)
 
 #TODO: cambiar de mostrar el plot a guardar el plot en un archivo
+#plt.savefig("./DBSCAN/DBSCAN_eps_" + str(sys.argv[2]) + "_min_samples_" + str(sys.argv[3]) + ".png")
 plt.show()
