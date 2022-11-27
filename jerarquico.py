@@ -7,7 +7,6 @@ from sklearn.cluster import AgglomerativeClustering
 data = pd.read_csv(sys.argv[1])
 k = sys.argv[2]
 
-
 tipo = sys.argv[3]
 if(tipo == 'u'):
     clustering = AgglomerativeClustering(
@@ -22,8 +21,6 @@ datos = np.array(data)
 
 clusters = clustering.fit(datos)
 labels = clusters.labels_
-# chiledren = clustering.children_
-# u_labels = np.unique(label)
 
 if(tipo == 'u'):
     title = "Agglomerative con k = None y umbral = " + k

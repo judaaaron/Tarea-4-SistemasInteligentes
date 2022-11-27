@@ -19,34 +19,6 @@ unique_labels = set(labels)
 colors = [plt.cm.Spectral(each)
           for each in np.linspace(0, 1, len(unique_labels))]
 
-# for k, col in zip(unique_labels, colors):
-#     if k == -1:
-#         # Black used for noise.
-#         col = [0, 0, 0, 1]
-
-#     class_member_mask = labels == k
-
-#     xy = datos[class_member_mask & core_samples_mask]
-#     plt.plot(
-#         xy[:, 0],
-#         xy[:, 1],
-#         "o",
-#         markerfacecolor=tuple(col),
-#         markeredgecolor="k",
-#         markersize=14,
-#     )
-
-#     xy = datos[class_member_mask & ~core_samples_mask]
-#     plt.plot(
-#         xy[:, 0],
-#         xy[:, 1],
-#         "o",
-#         markerfacecolor=tuple(col),
-#         markeredgecolor="k",
-#         markersize=6,
-#     )
-
-
 y_pred = db.fit_predict(datos)
 
 title = "DBSCAN de eps = " + \
@@ -55,4 +27,5 @@ fig = plt.scatter(datos[:, 0], datos[:, 1], c=y_pred, cmap='rainbow')
 man = plt.get_current_fig_manager()
 man.set_window_title(title)
 
+#TODO: cambiar de mostrar el plot a guardar el plot en un archivo
 plt.show()
