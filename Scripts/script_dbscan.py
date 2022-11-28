@@ -4,7 +4,7 @@ import matplotlib.pyplot as plt
 import sys
 from sklearn.cluster import DBSCAN
 
-nombres = ["datos_1.csv", "datos_2.csv", "datos_3.csv"]
+nombres = ["./Datasets/datos_1.csv", "./Datasets/datos_2.csv", "./Datasets/datos_3.csv"]
 min_sampless = [5, 10, 15]
 epsVals = [0.01, 0.1, 0.3, 0.5, 1]
 

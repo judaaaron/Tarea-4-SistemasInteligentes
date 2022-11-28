@@ -8,7 +8,7 @@ import pickle as pkl
 import time
 
 ks = [1,3,5,7,9,11,13,15]
-datasets = ["./training_data_small.csv", "./training_data_medium.csv", "./training_data_large.csv", "./training_data_very_large.csv"]
+datasets = ["./Datasets/training_data_small.csv", "./Datasets/training_data_medium.csv", "./Datasets/training_data_large.csv", "./Datasets/training_data_very_large.csv"]
 
 for nombre in datasets:
     for k in ks:

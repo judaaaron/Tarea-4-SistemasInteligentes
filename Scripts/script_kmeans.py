@@ -4,7 +4,7 @@ import sys
 import numpy as np
 from sklearn.cluster import KMeans
 
-datos = ["datos_1.csv", "datos_2.csv", "datos_3.csv"]
+datos = ["./Datasets/datos_1.csv", "./Datasets/datos_2.csv", "./Datasets/datos_3.csv"]
 ks = [1,2,3,4,5]
 
 for nombre in datos:
