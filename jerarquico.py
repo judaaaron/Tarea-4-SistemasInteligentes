@@ -30,5 +30,10 @@ fig = plt.scatter(datos[:, 0], datos[:, 1], c=labels, cmap='rainbow')
 man = plt.get_current_fig_manager()
 man.set_window_title(title)
 
+if(tipo == 'u'):
+    title = "./Figuras/Agglomerative/Agglomerative_k_None-umbral_" + str(k)+ "_data_" + sys.argv[1].split("_")[1].split(".")[0] + ".png"
+elif(tipo == 'c'):
+    title = "./Figuras/Agglomerative/Agglomerative_k_clusters" + str(k) + "_umbral_None"+ "_data_" + sys.argv[1].split("_")[1].split(".")[0] + ".png"
+
 plt.legend()
-plt.show()
+plt.savefig(title)
